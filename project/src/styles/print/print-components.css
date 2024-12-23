@@ -1,0 +1,63 @@
+@media print {
+  .bill-field {
+    background-color: var(--color-gray-50) !important;
+    border: 1px solid var(--color-gray-200) !important;
+    margin-bottom: var(--spacing-xs);
+    box-shadow: none !important;
+    break-inside: avoid;
+    font-size: var(--font-size-xs);
+  }
+
+  .bill-label {
+    background-color: var(--color-gray-100) !important;
+    color: var(--color-gray-900) !important;
+    font-weight: bold;
+    padding: calc(var(--spacing-sm) - 1px) !important;
+    break-inside: avoid;
+  }
+
+  input, 
+  textarea, 
+  select {
+    color: black !important;
+    font-weight: 600 !important;
+    background: transparent !important;
+    border: none !important;
+    padding: calc(var(--spacing-sm) - 1px) !important;
+    min-height: 28px !important;
+    font-size: var(--font-size-xs) !important;
+    break-inside: avoid;
+  }
+
+  select {
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+  }
+
+  .bill-header {
+    font-size: var(--font-size-base) !important;
+    margin-bottom: var(--spacing-md) !important;
+    break-after: avoid;
+  }
+
+  .bill-field-content {
+    display: grid !important;
+    grid-template-columns: 1fr 3fr !important;
+    gap: 0 !important;
+    break-inside: avoid;
+  }
+
+  img.logo {
+    max-height: 28px !important;
+    margin: var(--spacing-xs) !important;
+    break-before: avoid;
+    break-after: avoid;
+  }
+
+  .contact-info {
+    margin: var(--spacing-xs) 0 !important;
+    font-size: var(--font-size-xs) !important;
+    break-before: avoid;
+  }
+}

@@ -1,0 +1,151 @@
+/* Print Styles */
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: white !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Bills Container */
+  .bills-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Individual Bill */
+  .shipping-bill {
+    width: 210mm;
+    height: 148.5mm; /* A5 height */
+    padding: 8mm;
+    margin: 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    background: white !important;
+    color: black !important;
+    border: none !important;
+    box-shadow: none !important;
+    position: relative;
+  }
+
+  /* Two bills per page */
+  .bills-container > div {
+    height: 148.5mm;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Force page break after every two bills */
+  .bills-container > div:nth-child(2n) {
+    page-break-after: always;
+  }
+
+  /* Hide non-printable elements */
+  .print\\:hidden {
+    display: none !important;
+  }
+
+  /* Print-specific field styles */
+  .bill-field {
+    @apply bg-gray-50 border border-gray-300 mb-1;
+    box-shadow: none !important;
+    break-inside: avoid;
+    border: 1px solid #e5e7eb !important;
+  }
+
+  .bill-label {
+    @apply bg-gray-100 text-gray-800 font-bold;
+    break-inside: avoid;
+    background-color: #f3f4f6 !important;
+    padding: 0.35rem !important;
+  }
+
+  /* Print form elements */
+  input, textarea, select {
+    @apply text-black font-semibold !important;
+    background: transparent !important;
+    border: none !important;
+    break-inside: avoid;
+    padding: 0.35rem !important;
+    min-height: 28px !important;
+  }
+
+  select {
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+  }
+
+  /* Print typography */
+  .bill-header {
+    font-size: 14px !important;
+    margin-bottom: 6px !important;
+    break-after: avoid;
+    color: inherit !important;
+  }
+
+  .bill-field {
+    font-size: 11px !important;
+  }
+
+  input, textarea, select {
+    font-size: 11px !important;
+  }
+
+  /* Print spacing */
+  .grid {
+    gap: 0 !important;
+    break-inside: avoid;
+  }
+
+  /* Print logo */
+  img {
+    max-height: 28px !important;
+    margin: 3px !important;
+    break-before: avoid;
+    break-after: avoid;
+  }
+
+  /* Print contact info */
+  .contact-info {
+    margin: 4px 0 !important;
+    font-size: 11px !important;
+    break-before: avoid;
+  }
+
+  /* Ensure proper field alignment */
+  .grid-cols-4 {
+    display: grid !important;
+    grid-template-columns: 1fr 3fr !important;
+  }
+
+  /* Preserve colors in print */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Ensure proper text colors */
+  .text-gray-700, .text-gray-800, .text-gray-900 {
+    color: #1a202c !important;
+  }
+
+  /* Preserve background colors */
+  .bg-gray-50, .bg-gray-100 {
+    background-color: #f9fafb !important;
+  }
+
+  /* Ensure proper borders */
+  .border, .border-gray-200, .border-gray-300 {
+    border-color: #e5e7eb !important;
+  }
+}

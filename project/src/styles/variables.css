@@ -1,0 +1,16 @@
+:root {
+  /* Colors */
+  --header-color: #4169E1;
+  --contact-color: #4169E1;
+  --label-color: #374151;
+
+  /* Font Sizes */
+  --header-font-size: 32px;
+  --contact-font-size: 24px;
+  --name-font-size: 24px;
+  --address-font-size: 18px;
+  --phone-font-size: 16px;
+  --items-font-size: 16px;
+  --totals-font-size: 20px;
+  --notes-font-size: 14px;
+}

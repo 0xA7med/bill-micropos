@@ -1,0 +1,33 @@
+/* Shipping Bill Container */
+.shipping-bill {
+  width: var(--print-width);
+  min-height: var(--print-height);
+  margin: 0 auto;
+  padding: var(--print-padding) calc(var(--print-padding) * 1.5);
+  background-color: white;
+}
+
+.dark .shipping-bill {
+  background-color: var(--color-gray-900);
+}
+
+/* Bills Container */
+.bills-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+/* Bill Container */
+.bill-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+@media (min-width: 768px) {
+  .bill-container {
+    flex-direction: row;
+    gap: var(--spacing-xl);
+  }
+}

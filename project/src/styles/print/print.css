@@ -1,0 +1,87 @@
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+    padding: 0;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: white !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Container Layout */
+  .bills-container {
+    display: block;
+    padding: 0;
+    margin: 0;
+    height: auto;
+  }
+
+  .shipping-bill {
+    width: var(--print-width);
+    height: var(--print-height);
+    max-height: var(--print-height);
+    padding: var(--print-padding);
+    margin: 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    display: block;
+    position: relative;
+  }
+
+  /* Two Bills Per Page */
+  .bills-container > div {
+    height: var(--print-height);
+    max-height: var(--print-height);
+    page-break-inside: avoid;
+    break-inside: avoid;
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+
+  .bills-container > div:nth-child(2n) {
+    page-break-after: always;
+  }
+
+  /* Field Styles */
+  .bill-field {
+    background-color: var(--color-gray-50) !important;
+    border: 1px solid var(--color-gray-200) !important;
+    margin-bottom: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+  }
+
+  .bill-label {
+    background-color: var(--color-gray-100) !important;
+    color: var(--color-gray-900) !important;
+    padding: calc(var(--spacing-sm) - 1px) !important;
+  }
+
+  /* Form Elements */
+  input, textarea, select {
+    color: black !important;
+    font-weight: 600 !important;
+    background: transparent !important;
+    border: none !important;
+    padding: calc(var(--spacing-sm) - 1px) !important;
+    min-height: 28px !important;
+    font-size: var(--font-size-xs) !important;
+  }
+
+  /* Typography */
+  .bill-header {
+    font-size: var(--font-size-base) !important;
+    margin-bottom: var(--spacing-md) !important;
+  }
+
+  /* Hide Elements */
+  .print\\:hidden {
+    display: none !important;
+  }
+}

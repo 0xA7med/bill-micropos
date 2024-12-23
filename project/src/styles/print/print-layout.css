@@ -1,0 +1,130 @@
+:root {
+  --nameFontSize: 22px;
+  --addressFontSize: 22px;
+  --phoneFontSize: 22px;
+  --itemsFontSize: 22px;
+  --totalsFontSize: 22px;
+  --notesFontSize: 22px;
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+    padding: 0;
+  }
+
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100% !important;
+    background: white !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Reset container styles */
+  .bill-container {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Bills container */
+  .bills-container {
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    height: auto !important;
+  }
+
+  /* Individual bill */
+  .shipping-bill {
+    width: 210mm !important;
+    height: 148.5mm !important;
+    max-height: 148.5mm !important;
+    padding: 8mm !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    position: relative !important;
+    overflow: hidden !important;
+    border: none !important;
+    box-shadow: none !important;
+    display: block !important;
+  }
+
+  /* Customer Info Styles */
+  .bill-header {
+    color: var(--header-color) !important;
+    font-size: var(--header-font-size) !important;
+    margin: 2mm 0 4mm 0 !important;
+    padding: 0 !important;
+    text-align: center !important;
+    font-weight: bold !important;
+  }
+
+  /* Name field */
+  .customer-name input,
+  .customer-name label {
+    font-size: var(--name-font-size) !important;
+  }
+  .customer-name label {
+    font-weight: bold !important;
+  }
+
+  /* Address field */
+  .customer-address textarea,
+  .customer-address label {
+    font-size: var(--address-font-size) !important;
+  }
+
+  /* Phone field */
+  .customer-phone input,
+  .customer-phone label {
+    font-size: var(--phone-font-size) !important;
+  }
+
+  /* Items table */
+  .items-table input,
+  .items-table label,
+  .items-table select {
+    font-size: var(--items-font-size) !important;
+  }
+
+  /* Totals section */
+  .totals-section input,
+  .totals-section label {
+    font-size: var(--totals-font-size) !important;
+  }
+
+  /* Notes section */
+  .notes-section textarea,
+  .notes-section label {
+    font-size: var(--notes-font-size) !important;
+  }
+
+  /* Hide non-printable elements */
+  .no-print,
+  .print:hidden {
+    display: none !important;
+  }
+
+  /* Remove shadows and borders in print */
+  .print\:shadow-none {
+    box-shadow: none !important;
+  }
+
+  /* Force background colors in print */
+  .bg-white {
+    background-color: white !important;
+  }
+
+  /* Remove rounded corners */
+  .rounded-lg {
+    border-radius: 0 !important;
+  }
+}
