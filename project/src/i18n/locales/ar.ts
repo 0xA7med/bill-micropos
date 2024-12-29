@@ -22,6 +22,10 @@ export default {
     labelColor: 'لون التسميات',
     contactFontSize: 'حجم خط معلومات الاتصال',
     contactColor: 'لون معلومات الاتصال',
+    save: 'حفظ الإعدادات',
+    reset: 'إعادة الضبط',
+    saveAsDefault: 'تعيين كافتراضي',
+    defaultSaved: 'تم حفظ القيمة الافتراضية بنجاح',
     logo: {
       title: 'إعدادات الشعار',
       show: 'إظهار الشعار',
@@ -52,9 +56,7 @@ export default {
       title: 'اللغة',
       ar: 'العربية',
       en: 'English'
-    },
-    save: 'حفظ الإعدادات',
-    reset: 'إعادة الضبط'
+    }
   },
   bill: {
     name: 'الاسم',

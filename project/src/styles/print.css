@@ -15,9 +15,7 @@
 
   /* Bills Container */
   .bills-container {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+    display: block;
     padding: 0;
     margin: 0;
   }
@@ -28,25 +26,29 @@
     height: 148.5mm; /* A5 height */
     padding: 8mm;
     margin: 0;
-    page-break-inside: avoid;
-    break-inside: avoid;
     background: white !important;
     color: black !important;
     border: none !important;
     box-shadow: none !important;
     position: relative;
+    page-break-inside: avoid;
   }
 
   /* Two bills per page */
   .bills-container > div {
     height: 148.5mm;
     page-break-inside: avoid;
-    break-inside: avoid;
   }
 
-  /* Force page break after every two bills */
+  /* Group bills in pairs */
+  .bills-container > div:nth-child(2n-1) {
+    margin-bottom: 0;
+    page-break-after: avoid;
+  }
+
   .bills-container > div:nth-child(2n) {
-    page-break-after: always;
+    margin-top: 0;
+    page-break-before: auto;
   }
 
   /* Hide non-printable elements */

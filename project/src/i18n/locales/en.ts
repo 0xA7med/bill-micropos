@@ -54,7 +54,9 @@ export default {
       en: 'English'
     },
     save: 'Save Settings',
-    reset: 'Reset'
+    reset: 'Reset',
+    saveAsDefault: 'Set as Default',
+    defaultSaved: 'Default value saved successfully'
   },
   bill: {
     name: 'Name',

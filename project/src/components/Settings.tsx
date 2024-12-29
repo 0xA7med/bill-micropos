@@ -21,6 +21,32 @@ const Settings: React.FC<SettingsProps> = ({ settings, onSave, onBack }) => {
     if (savedLogo) {
       setCurrentSettings(prev => ({ ...prev, logoUrl: savedLogo }));
     }
+
+    const fontSizeKeys: (keyof SettingsState)[] = [
+      'headerFontSize',
+      'nameFontSize',
+      'addressFontSize',
+      'phoneFontSize',
+      'itemsFontSize',
+      'totalsFontSize',
+      'notesFontSize',
+      'contactFontSize'
+    ];
+
+    const savedSettings = { ...currentSettings };
+    let hasChanges = false;
+
+    fontSizeKeys.forEach(key => {
+      const savedValue = localStorage.getItem(`default_${key}`);
+      if (savedValue) {
+        savedSettings[key] = Number(savedValue);
+        hasChanges = true;
+      }
+    });
+
+    if (hasChanges) {
+      setCurrentSettings(savedSettings);
+    }
   }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -41,6 +67,11 @@ const Settings: React.FC<SettingsProps> = ({ settings, onSave, onBack }) => {
       }
     };
     reader.readAsDataURL(file);
+  };
+
+  const handleSaveFontSizeAsDefault = (key: keyof SettingsState, value: number) => {
+    localStorage.setItem(`default_${key}`, value.toString());
+    alert(t('settings.defaultSaved'));
   };
 
   return (
@@ -73,14 +104,23 @@ const Settings: React.FC<SettingsProps> = ({ settings, onSave, onBack }) => {
               </div>
               <div>
                 <label className="block text-sm font-medium mb-1 dark:text-gray-300">{t('settings.headerFontSize')}</label>
-                <input
-                  type="number"
-                  min="16"
-                  max="36"
-                  value={currentSettings.headerFontSize}
-                  onChange={(e) => setCurrentSettings(prev => ({ ...prev, headerFontSize: Number(e.target.value) }))}
-                  className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                />
+                <div className="flex gap-2">
+                  <input
+                    type="number"
+                    min="16"
+                    max="36"
+                    value={currentSettings.headerFontSize}
+                    onChange={(e) => setCurrentSettings(prev => ({ ...prev, headerFontSize: Number(e.target.value) }))}
+                    className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => handleSaveFontSizeAsDefault('headerFontSize', currentSettings.headerFontSize)}
+                    className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm"
+                  >
+                    {t('settings.saveAsDefault')}
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -150,14 +190,23 @@ const Settings: React.FC<SettingsProps> = ({ settings, onSave, onBack }) => {
               </div>
               <div>
                 <label className="block text-sm font-medium mb-1 dark:text-gray-300">{t('settings.contactFontSize')}</label>
-                <input
-                  type="number"
-                  min="12"
-                  max="24"
-                  value={currentSettings.contactFontSize}
-                  onChange={(e) => setCurrentSettings(prev => ({ ...prev, contactFontSize: Number(e.target.value) }))}
-                  className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                />
+                <div className="flex gap-2">
+                  <input
+                    type="number"
+                    min="12"
+                    max="24"
+                    value={currentSettings.contactFontSize}
+                    onChange={(e) => setCurrentSettings(prev => ({ ...prev, contactFontSize: Number(e.target.value) }))}
+                    className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => handleSaveFontSizeAsDefault('contactFontSize', currentSettings.contactFontSize)}
+                    className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm"
+                  >
+                    {t('settings.saveAsDefault')}
+                  </button>
+                </div>
               </div>
               <div>
                 <label className="block text-sm font-medium mb-1 dark:text-gray-300">{t('settings.contactColor')}</label>
@@ -177,69 +226,123 @@ const Settings: React.FC<SettingsProps> = ({ settings, onSave, onBack }) => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
                 <label className="block text-sm font-medium mb-1 dark:text-gray-300">{t('settings.nameFontSize')}</label>
-                <input
-                  type="number"
-                  min="12"
-                  max="36"
-                  value={currentSettings.nameFontSize}
-                  onChange={(e) => setCurrentSettings(prev => ({ ...prev, nameFontSize: Number(e.target.value) }))}
-                  className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                />
+                <div className="flex gap-2">
+                  <input
+                    type="number"
+                    min="12"
+                    max="36"
+                    value={currentSettings.nameFontSize}
+                    onChange={(e) => setCurrentSettings(prev => ({ ...prev, nameFontSize: Number(e.target.value) }))}
+                    className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => handleSaveFontSizeAsDefault('nameFontSize', currentSettings.nameFontSize)}
+                    className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm"
+                  >
+                    {t('settings.saveAsDefault')}
+                  </button>
+                </div>
               </div>
               <div>
                 <label className="block text-sm font-medium mb-1 dark:text-gray-300">{t('settings.addressFontSize')}</label>
-                <input
-                  type="number"
-                  min="12"
-                  max="36"
-                  value={currentSettings.addressFontSize}
-                  onChange={(e) => setCurrentSettings(prev => ({ ...prev, addressFontSize: Number(e.target.value) }))}
-                  className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                />
+                <div className="flex gap-2">
+                  <input
+                    type="number"
+                    min="12"
+                    max="36"
+                    value={currentSettings.addressFontSize}
+                    onChange={(e) => setCurrentSettings(prev => ({ ...prev, addressFontSize: Number(e.target.value) }))}
+                    className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => handleSaveFontSizeAsDefault('addressFontSize', currentSettings.addressFontSize)}
+                    className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm"
+                  >
+                    {t('settings.saveAsDefault')}
+                  </button>
+                </div>
               </div>
               <div>
                 <label className="block text-sm font-medium mb-1 dark:text-gray-300">{t('settings.phoneFontSize')}</label>
-                <input
-                  type="number"
-                  min="12"
-                  max="36"
-                  value={currentSettings.phoneFontSize}
-                  onChange={(e) => setCurrentSettings(prev => ({ ...prev, phoneFontSize: Number(e.target.value) }))}
-                  className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                />
+                <div className="flex gap-2">
+                  <input
+                    type="number"
+                    min="12"
+                    max="36"
+                    value={currentSettings.phoneFontSize}
+                    onChange={(e) => setCurrentSettings(prev => ({ ...prev, phoneFontSize: Number(e.target.value) }))}
+                    className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => handleSaveFontSizeAsDefault('phoneFontSize', currentSettings.phoneFontSize)}
+                    className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm"
+                  >
+                    {t('settings.saveAsDefault')}
+                  </button>
+                </div>
               </div>
               <div>
                 <label className="block text-sm font-medium mb-1 dark:text-gray-300">{t('settings.itemsFontSize')}</label>
-                <input
-                  type="number"
-                  min="12"
-                  max="36"
-                  value={currentSettings.itemsFontSize}
-                  onChange={(e) => setCurrentSettings(prev => ({ ...prev, itemsFontSize: Number(e.target.value) }))}
-                  className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                />
+                <div className="flex gap-2">
+                  <input
+                    type="number"
+                    min="12"
+                    max="36"
+                    value={currentSettings.itemsFontSize}
+                    onChange={(e) => setCurrentSettings(prev => ({ ...prev, itemsFontSize: Number(e.target.value) }))}
+                    className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => handleSaveFontSizeAsDefault('itemsFontSize', currentSettings.itemsFontSize)}
+                    className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm"
+                  >
+                    {t('settings.saveAsDefault')}
+                  </button>
+                </div>
               </div>
               <div>
                 <label className="block text-sm font-medium mb-1 dark:text-gray-300">{t('settings.totalsFontSize')}</label>
-                <input
-                  type="number"
-                  min="12"
-                  max="36"
-                  value={currentSettings.totalsFontSize}
-                  onChange={(e) => setCurrentSettings(prev => ({ ...prev, totalsFontSize: Number(e.target.value) }))}
-                  className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                />
+                <div className="flex gap-2">
+                  <input
+                    type="number"
+                    min="12"
+                    max="36"
+                    value={currentSettings.totalsFontSize}
+                    onChange={(e) => setCurrentSettings(prev => ({ ...prev, totalsFontSize: Number(e.target.value) }))}
+                    className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => handleSaveFontSizeAsDefault('totalsFontSize', currentSettings.totalsFontSize)}
+                    className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm"
+                  >
+                    {t('settings.saveAsDefault')}
+                  </button>
+                </div>
               </div>
               <div>
                 <label className="block text-sm font-medium mb-1 dark:text-gray-300">{t('settings.notesFontSize')}</label>
-                <input
-                  type="number"
-                  min="12"
-                  max="36"
-                  value={currentSettings.notesFontSize}
-                  onChange={(e) => setCurrentSettings(prev => ({ ...prev, notesFontSize: Number(e.target.value) }))}
-                  className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                />
+                <div className="flex gap-2">
+                  <input
+                    type="number"
+                    min="12"
+                    max="36"
+                    value={currentSettings.notesFontSize}
+                    onChange={(e) => setCurrentSettings(prev => ({ ...prev, notesFontSize: Number(e.target.value) }))}
+                    className="w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => handleSaveFontSizeAsDefault('notesFontSize', currentSettings.notesFontSize)}
+                    className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm"
+                  >
+                    {t('settings.saveAsDefault')}
+                  </button>
+                </div>
               </div>
             </div>
           </div>
