@@ -10,7 +10,13 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      external: ['dotenv']
+      external: ['dotenv'],
+      output: {
+        manualChunks: undefined,
+        entryFileNames: 'assets/[name].js',
+        chunkFileNames: 'assets/[name].js',
+        assetFileNames: 'assets/[name].[ext]',
+      },
     }
   }
 });
