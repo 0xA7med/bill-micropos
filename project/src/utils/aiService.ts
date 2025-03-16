@@ -1,6 +1,9 @@
-const API_KEY = 'AIzaSyAnGUVoSrDk3RgihVAn_U7AqqO050wsPQc';
+import dotenv from 'dotenv';
+dotenv.config();
+
+const API_KEY = process.env.API_KEY;
 const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
-const BACKUP_API_KEY = 'sk-90cdfa141889478fbb1bbfbc32190c96';
+const BACKUP_API_KEY = process.env.BACKUP_API_KEY;
 const BACKUP_API_URL = 'https://api.deepseek.com/analyze';
 
 interface AIResponse {
