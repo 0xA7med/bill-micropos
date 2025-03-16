@@ -1,0 +1,196 @@
+/* Bill Container Styles */
+.bill-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+@media (min-width: 768px) {
+  .bill-container {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+/* Shipping Bill Styles */
+.shipping-bill {
+  width: 210mm;
+  min-height: 148.5mm; /* A5 height */
+  margin: 0 auto;
+  padding: 8mm 12mm;
+}
+
+.bill-header {
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+
+.bill-field {
+  @apply bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-600 mb-1.5 rounded-lg overflow-hidden;
+}
+
+.bill-label {
+  @apply font-bold bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 p-1.5;
+}
+
+/* Compact field styles */
+.bill-field > div {
+  display: grid;
+  gap: 0;
+}
+
+.bill-field input,
+.bill-field textarea,
+.bill-field select {
+  @apply bg-gray-50 dark:bg-gray-800 p-1.5;
+  min-height: 36px;
+}
+
+/* Print-specific styles */
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    margin: 0;
+    background-color: white !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  .bills-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    background-color: white !important;
+  }
+
+  .bill-container {
+    width: 100%;
+    height: 148.5mm;
+    margin: 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    background-color: white !important;
+  }
+
+  .shipping-bill {
+    width: 100%;
+    height: 148.5mm;
+    margin: 0;
+    padding: 5mm;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    background-color: white !important;
+  }
+
+  /* تحسين وضوح النصوص */
+  .bill-field {
+    margin: 0.5mm 0 !important;
+  }
+
+  .bill-field > div {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .bill-field input,
+  .bill-field textarea,
+  .bill-field select {
+    min-height: 6mm !important;
+    font-size: 13px !important;
+    padding: 1mm 2mm !important;
+  }
+
+  .bill-label {
+    padding: 1mm 2mm !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+  }
+
+  .bill-header {
+    margin-bottom: 3mm !important;
+  }
+
+  /* Reset dark mode styles for printing */
+  .dark {
+    background-color: white !important;
+  }
+
+  .dark .bill-field,
+  .dark .shipping-bill,
+  .dark .bill-container,
+  .dark .bills-container {
+    background-color: white !important;
+    border-color: #e5e7eb !important;
+  }
+
+  .dark .bill-field input,
+  .dark .bill-field textarea,
+  .dark .bill-field select {
+    background-color: white !important;
+    color: black !important;
+  }
+
+  .dark .bill-label {
+    background-color: #f9fafb !important;
+    color: #374151 !important;
+  }
+
+  /* Hide non-printable elements */
+  .print:hidden {
+    display: none !important;
+  }
+
+  /* Force two bills per page */
+  .bill-container:nth-child(odd) {
+    margin-bottom: 0;
+    page-break-after: avoid;
+  }
+
+  .bill-container:nth-child(even) {
+    page-break-after: always;
+  }
+}
+
+/* Screen-specific styles */
+@media screen {
+  .bill-container {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Ensure proper field heights */
+.bill-field textarea {
+  @apply resize-none;
+  height: 36px;
+  min-height: 36px;
+}
+
+/* Adjust phone fields layout */
+.bill-field .phone-fields {
+  @apply grid grid-cols-2 gap-0;
+}
+
+.bill-field .phone-fields input {
+  @apply border-0;
+}
+
+/* Product description field */
+.product-desc-field {
+  @apply mt-1;
+}
+
+.product-desc-field input {
+  @apply text-center;
+}
+
+/* Adjust spacing for better compactness */
+.bills-container {
+  @apply space-y-4;
+}

@@ -1,0 +1,31 @@
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .shipping-bill {
+    width: 100%;
+    padding: 5mm;
+  }
+  
+  .bill-field .grid-cols-4 {
+    @apply grid-cols-1;
+  }
+  
+  .bill-label {
+    @apply border-b border-l-0;
+  }
+
+  .amount-section {
+    @apply flex-col;
+  }
+
+  .amount-section > div {
+    @apply w-full border-l-0 border-t;
+  }
+
+  .amount-section > div:first-child {
+    @apply border-t-0;
+  }
+
+  .amount-input {
+    @apply text-lg py-2;
+  }
+}

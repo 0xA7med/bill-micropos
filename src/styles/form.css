@@ -1,0 +1,30 @@
+/* Form Input Styles */
+input, textarea, select {
+  @apply bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 transition-colors w-full;
+  border: none;
+  outline: none;
+}
+
+input:focus, textarea:focus, select:focus {
+  @apply ring-1 ring-blue-500;
+}
+
+.dark input, .dark textarea, .dark select {
+  @apply border-gray-600 focus:border-blue-500;
+}
+
+select option {
+  @apply bg-gray-50 dark:bg-gray-800 text-black dark:text-white;
+}
+
+/* Placeholder styles */
+input::placeholder,
+textarea::placeholder {
+  @apply text-gray-500 dark:text-gray-400;
+}
+
+/* Focused state */
+input:focus::placeholder,
+textarea:focus::placeholder {
+  @apply text-gray-400 dark:text-gray-500;
+}
