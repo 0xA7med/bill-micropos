@@ -9,6 +9,8 @@ export default defineConfig({
     exclude: ['lucide-react'],
   },
   build: {
+    outDir: 'dist',
+    sourcemap: true,
     rollupOptions: {
       external: ['dotenv'],
       output: {
@@ -18,5 +20,5 @@ export default defineConfig({
         assetFileNames: 'assets/[name].[ext]',
       },
     }
-  }
+  },
 });
