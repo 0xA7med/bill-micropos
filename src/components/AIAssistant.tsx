@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Sparkles, Clipboard } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { analyzeText } from '../utils/aiService';
+import { analyzeText } from '../utils/api';
 
 interface AIAssistantProps {
   onFillForm: (data: {

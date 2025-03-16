@@ -1,11 +1,3 @@
-import dotenv from 'dotenv';
-dotenv.config({ path: './.env' });
-
-const API_KEY = process.env.API_KEY;
-const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
-const BACKUP_API_KEY = process.env.BACKUP_API_KEY;
-const BACKUP_API_URL = 'https://api.deepseek.com/analyze';
-
 interface AIResponse {
   name: string;
   address: string;
@@ -16,9 +8,15 @@ interface AIResponse {
   isPaid: boolean;
 }
 
+// استخدم import.meta.env بدلاً من process.env
+const API_KEY = import.meta.env.VITE_API_KEY;
+const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
+const BACKUP_API_KEY = import.meta.env.VITE_BACKUP_API_KEY;
+const BACKUP_API_URL = 'https://api.deepseek.com/analyze';
 
-async function analyzeWithBackupAPI(text: string): Promise<AIResponse> {
-  const prompt = `
+// باقي الكود...
+  async function analyzeWithBackupAPI(text: string): Promise<AIResponse> {
+    const prompt = `
     قم بتحليل الرسالة التالية واستخراج المعلومات التالية:
     - اسم العميل
     - العنوان
@@ -119,9 +117,9 @@ async function analyzeWithBackupAPI(text: string): Promise<AIResponse> {
 
   return result;
 }
-
-export async function analyzeText(text: string): Promise<AIResponse> {
-  const prompt = `
+  
+  export async function analyzeText(text: string): Promise<AIResponse> {
+    const prompt = `
     قم بتحليل الرسالة التالية واستخراج المعلومات التالية:
     - اسم العميل
     - العنوان

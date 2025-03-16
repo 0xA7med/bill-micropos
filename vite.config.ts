@@ -1,24 +1,20 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// https://vitejs.dev/config/
+// تحميل المتغيرات البيئية
+import { config } from 'dotenv';
+config();
+
 export default defineConfig({
-  base: '/bill-micropos/',
   plugins: [react()],
-  optimizeDeps: {
-    exclude: ['lucide-react'],
+  base: './',
+  define: {
+    // تعريف المتغيرات البيئية التي تحتاجها
+    'import.meta.env.VITE_API_KEY': JSON.stringify(process.env.VITE_API_KEY),
+    'import.meta.env.VITE_BACKUP_API_KEY': JSON.stringify(process.env.VITE_BACKUP_API_KEY)
   },
   build: {
     outDir: 'dist',
-    sourcemap: true,
-    rollupOptions: {
-      external: ['dotenv'],
-      output: {
-        manualChunks: undefined,
-        entryFileNames: 'assets/[name].js',
-        chunkFileNames: 'assets/[name].js',
-        assetFileNames: 'assets/[name].[ext]',
-      },
-    }
-  },
+    sourcemap: true
+  }
 });

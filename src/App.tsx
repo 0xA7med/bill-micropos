@@ -42,6 +42,11 @@ const App: React.FC = () => {
     window.print();
   };
 
+  console.log("Environment variables:", {
+    API_KEY: import.meta.env.VITE_API_KEY,
+    BACKUP_API_KEY: import.meta.env.VITE_BACKUP_API_KEY
+  });
+  
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 p-4">
       <PrintStyles settings={settings} />

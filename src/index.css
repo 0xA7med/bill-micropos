@@ -3,10 +3,17 @@
 @import './styles/form.css';
 @import './styles/print.css';
 @import './styles/responsive.css';
+@import './styles/index.css';
+@import './styles/components/bill-container.css';
+@import './styles/components/bill-field.css';
+@import './styles/components/form-controls.css';
+@import './styles/print/print-layout.css';
+@import './styles/print/print-components.css';
+@import './styles/variables.css';
 
 .root {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
