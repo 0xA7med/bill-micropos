@@ -16,6 +16,7 @@ interface AIResponse {
   isPaid: boolean;
 }
 
+
 async function analyzeWithBackupAPI(text: string): Promise<AIResponse> {
   const prompt = `
     قم بتحليل الرسالة التالية واستخراج المعلومات التالية:
