@@ -12,6 +12,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "dotenv": "^16.4.7",
     "i18next": "^23.10.1",
     "i18next-browser-languagedetector": "^7.2.0",
     "lucide-react": "^0.344.0",
